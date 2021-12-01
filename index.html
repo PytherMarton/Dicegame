@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dicegame</title>
+</head>
+<body>
+    <div class="info">
+        <div class="name"> 
+            <h1>Player 1</h1>
+            <h1>Player 2</h1>
+        </div>
+        <div class="score1">
+            <p id="totals1">TOTAL: 0</p>
+            <p id="current1">CURRENT: 0</p>
+        </div>
+        <div class="score2">
+            <p id="totals2">TOTAL: 0</p>
+            <p id="current2">CURRENT: 0</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="dic">
+            <img src="d1.png" id="d" alt="Photo of dice">
+        </div>
+    </div>
+    <div class="blayout">
+        <button id="reload" onclick="winow.location.reload()">NEW GAME</button>
+        <button onclick="roll()">ROLL DICE</button>
+        <button id="hold">HOLD</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
