@@ -8,19 +8,47 @@ const images = [
     "d6.png"
 ];
 
+let music1 = new Audio();
+music1.src = "music1.mp3"
+
+function tryThis(music) {
+    if(!music.paused) { 
+        music.pause();  
+        music.currentTime = 0; 
+        music.volume = 0.5;
+    }
+    else {
+        music.play();
+        music.volume = 0.5;
+    }
+};
+
 let dice = document.querySelectorAll("img");
 let current1 = 0;
 let current2 = 0;
 let totals1 = 0;
 let totals2= 0;
-const reloadButton = document.querySelector("#reload");
-const holdButton = document.querySelector("#hold");
 
 function reload() {
-    reload = location.reload();
-}
+    current1 = 0;
+    current2 = 0;
+    totals1 = 0;
+    totals2= 0;
+    document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
+    document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
+    document.querySelector("#totals1").innerHTML = `TOTAL: ${0}`;
+    document.querySelector("#totals2").innerHTML = `TOTAL: ${0}`;
+    music1.play();
+    music1.volume = 0.5;
+    rollDice.addEventListener("click", ()=>{
 
-reloadButton.addEventListener("click", reload, false);
+        if(rollDice.value === "roll2"){
+            rollDice.value = "roll";
+        }else{
+            rollDice.value= "roll2";
+        }
+    })
+}
 
 function roll() {
     dice.forEach(function(shake) {
@@ -35,76 +63,73 @@ function roll() {
         document.querySelector("#current1").innerHTML = `CURRENT: ${current1 + diceValue}`;
         if (roll != 8){
             current1 = current1 + diceValue;
-            console.log(current1);
         }
         if (current1 >= 20){
             setTimeout(function(){
-                alert("PLAYER1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
+                alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
             }, 500);
         }
         if (diceValue == 1) {
             setTimeout(function(){
-                alert("PLAYER1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU LOST!!!")
+                alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU LOST!!!")
                 reload();
             }, 500);
         }
-        holdButton.addEventListener("click", () =>{
-            document.querySelector("#totals1").innerHTML = `TOTAL: ${totals1 + current1}`;
-            document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
-            document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
-            roll = roll2;
-            // setTimeout(function(){
-            //     alert("It's Player2's turn!");
-            // }, 500);
-        })
     }, 1000);
 }
 
 function roll2() {
-    dice.forEach(function(shake) {
-        shake.classList.add("shake");
+    dice.forEach(function(shake2) {
+        shake2.classList.add("shake2");
     });
     setTimeout(function(){
-        dice.forEach(function(shake) {
-            shake.classList.remove("shake");
+        dice.forEach(function(shake2) {
+            shake2.classList.remove("shake2");
         });
         let diceValue = Math.floor(Math.random()*6)+1;
         document.querySelector("#d").setAttribute("src", images[diceValue]);
         document.querySelector("#current2").innerHTML = `CURRENT: ${current2 + diceValue}`;
         if (roll != 8){
             current2 = current2 + diceValue;
-            console.log(current2);
         }
         if (current2 >= 20){
             setTimeout(function(){
-                alert("PLAYER2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
+                alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
             }, 500);
         }
-        if (diceValue == 1) {
+        if (diceValue == 1 && current2 == 1){
             setTimeout(function(){
-                alert("PLAYER1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU LOST!!!")
+                alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> TRY AGAIN!!!")
+                current2 = 0;
+                document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
+                document.querySelector("#totals2").innerHTML = `TOTAL: ${0}`;
+            }, 500);
+        }
+        if (diceValue == 1 && current2 > 1) {
+            setTimeout(function(){
+                alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU LOST!!!")
                 reload();
             }, 500);
         }
-        holdButton.addEventListener("click", () =>{
-            document.querySelector("#totals2").innerHTML = `TOTAL: ${totals2 + current2}`;
-            document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
-            document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
-            setTimeout(function(){
-                alert("It's Player1's turn!");
-            }, 500);
-        })
     }, 1000);
 }
 
-// function hold2() {
-//     holdButton.addEventListener("click", () =>{
-//         document.querySelector("#totals1").innerHTML = `TOTAL: ${totals1 + current1}`;
-//         document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
-//         document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
-//         roll = roll2;
-//         setTimeout(function(){
-//             alert("It's Player1's turn!");
-//         }, 500);
-//     })
-// }
+function hold() {
+    document.querySelector("#totals1").innerHTML = `TOTAL: ${totals1 + current1}`;
+    document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
+    document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
+    setTimeout(function(){
+        alert("It's Player 2's turn!");
+        roll = roll2;
+        hold = hold2;
+    }, 500);
+}
+
+function hold2() {
+    document.querySelector("#totals2").innerHTML = `TOTAL: ${totals2 + current2}`;
+    document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
+    document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
+    setTimeout(function(){
+        alert("It's Player 1's turn!");
+    }, 500); 
+}

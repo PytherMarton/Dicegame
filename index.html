@@ -11,6 +11,7 @@
     <div class="info">
         <div class="name"> 
             <h1>Player 1</h1>
+            <button onclick="tryThis(music1)">MUSIC</button>
             <h1>Player 2</h1>
         </div>
         <div class="score1">
@@ -24,13 +25,13 @@
     </div>
     <div class="container">
         <div class="dic">
-            <img src="d1.png" id="d" alt="Photo of dice">
+            <img src="random.png" id="d" alt="Photo of dice">
         </div>
     </div>
     <div class="blayout">
-        <button id="reload" onclick="winow.location.reload()">NEW GAME</button>
-        <button onclick="roll()">ROLL DICE</button>
-        <button id="hold">HOLD</button>
+        <button onclick="reload()">NEW GAME</button>
+        <button id="rollDice" onclick="roll()">ROLL DICE</button>
+        <button id="hold" onclick="hold()">HOLD</button>
     </div>
     <script src="app.js"></script>
 </body>
