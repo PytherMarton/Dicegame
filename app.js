@@ -40,14 +40,9 @@ function reload() {
     document.querySelector("#totals2").innerHTML = `TOTAL: ${0}`;
     music1.play();
     music1.volume = 0.5;
-    rollDice.addEventListener("click", ()=>{
-
-        if(rollDice.value === "roll2"){
-            rollDice.value = "roll";
-        }else{
-            rollDice.value= "roll2";
-        }
-    })
+    setTimeout(function() {
+        alert("LETS ROLL!!!")
+    }, 500);
 }
 
 function roll() {
@@ -72,8 +67,8 @@ function roll() {
         if (diceValue == 1) {
             setTimeout(function(){
                 alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU LOST!!!")
-                reload();
             }, 500);
+            reload();
         }
     }, 1000);
 }
@@ -126,6 +121,8 @@ function hold() {
 }
 
 function hold2() {
+    roll = roll2;
+    hold2 = hold;
     document.querySelector("#totals2").innerHTML = `TOTAL: ${totals2 + current2}`;
     document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
     document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
