@@ -5,6 +5,17 @@
     font-family: fantasy;
 }
 
+h2 {
+    text-align: center;
+    padding-top: 30px;
+    padding-right: 12px;
+}
+
+h2 a {
+    text-decoration: none;
+    color:wheat;
+}
+
 .info {
     display: flex;
     flex-direction: column;
@@ -18,7 +29,7 @@
 }
 
 .name {
-    width: 130%;
+    width: 140%;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
@@ -35,7 +46,7 @@
 .score2 {
     position: relative;
     top: -30px;
-    left: 71px;
+    left: 100px;
     font-family: cursive;
     font-size: 20px;
 }
@@ -59,7 +70,6 @@ body {
     top: 70%;
     left: 50%;
     background-color: transparent;
-    /* box-shadow: 0 15px 35px black; */
 }
 
 .dic {
@@ -100,13 +110,3 @@ button {
     50% {transform: rotate(-8deg);}
     100% {transform: rotate(8deg);}
 }
-
-/* .shake2 {
-    animation: shake2 0.5s infinite;
-}
-
-@keyframes shake2 {
-    0% {transform: rotate(8deg);}
-    50% {transform: rotate(-8deg);}
-    100% {transform: rotate(8deg);}
-} */

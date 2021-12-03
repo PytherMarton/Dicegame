@@ -33,6 +33,7 @@ let score1 = 0;
 let totals1 = 0;
 let totals2 = 0;
 let score2 = 0;
+// let customerName = prompt("Please enter your name: ");
 
 let dice = document.querySelectorAll("img");
 
@@ -54,7 +55,8 @@ function game() {
         if (current1 >= 20 || score1 >= 20){
             setTimeout(function(){
                 alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-                document.querySelector("#totals1").innerHTML = `*** WINNER: ${score1} ***`;
+                document.getElementById("totals1").style.color = "green";
+                document.querySelector("#totals1").innerHTML = `< WINNER: ${score1} >`;
                 document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
             }, 500);
         }
@@ -99,7 +101,8 @@ function roll2() {
         if (current2 >= 20){
             setTimeout(function(){
                 alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-                document.querySelector("#totals2").innerHTML = `*** WINNER ${score2} ***`;
+                document.getElementById("totals2").style.color = "green";
+                document.querySelector("#totals2").innerHTML = `< WINNER ${score2} >`;
                 document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
             }, 500);
         }
@@ -146,7 +149,8 @@ function rollDices(){
         if (current1 >= 20 || totals1 >= 20){
             setTimeout(function(){
                 alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-                document.querySelector("#totals1").innerHTML = `*** WINNER: ${totals1 + current1} ***`;
+                document.getElementById("totals1").style.color = "green";
+                document.querySelector("#totals1").innerHTML = `< WINNER: ${totals1 + current1} >`;
                 document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
             }, 500);
         }
@@ -168,7 +172,8 @@ function holding() {
     if (totals1 + current1 >= 20){
         setTimeout(function(){
             alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-            document.querySelector("#totals1").innerHTML = `*** WINNER: ${totals1 + current1} ***`;
+            document.getElementById("totals1").style.color = "green";
+            document.querySelector("#totals1").innerHTML = `< WINNER: ${totals1 + current1} >`;
             document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
         }, 500);
     } else {
@@ -190,7 +195,8 @@ function passing() {
     if (current2 + score2 >= 20){
         setTimeout(function(){
             alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-            document.querySelector("#totals2").innerHTML = `*** WINNER: ${score2 + current2} ***`;
+            document.getElementById("totals2").style.color = "green";
+            document.querySelector("#totals2").innerHTML = `< WINNER: ${score2 + current2} >`;
             document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
             document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
         }, 500);
@@ -222,7 +228,8 @@ function roll3() {
         if (current2 >= 20 || score2 >= 20){
             setTimeout(function(){
                 alert("PLAYER 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
-                document.querySelector("#totals2").innerHTML = `*** WINNER: ${totals2 + current2} ***`;
+                document.getElementById("totals2").style.color = "green";
+                document.querySelector("#totals2").innerHTML = `< WINNER: ${totals2 + current2} >`;
                 document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
                 document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
             }, 500);
