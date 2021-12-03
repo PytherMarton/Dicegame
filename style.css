@@ -101,7 +101,7 @@ button {
     100% {transform: rotate(8deg);}
 }
 
-.shake2 {
+/* .shake2 {
     animation: shake2 0.5s infinite;
 }
 
@@ -109,4 +109,4 @@ button {
     0% {transform: rotate(8deg);}
     50% {transform: rotate(-8deg);}
     100% {transform: rotate(8deg);}
-}
+} */
