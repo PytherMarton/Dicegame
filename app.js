@@ -33,7 +33,6 @@ let score1 = 0;
 let totals1 = 0;
 let totals2 = 0;
 let score2 = 0;
-// let customerName = prompt("Please enter your name: ");
 
 let dice = document.querySelectorAll("img");
 
