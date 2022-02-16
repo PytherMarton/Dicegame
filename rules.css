@@ -74,3 +74,13 @@ button:hover span:after {
     right: 0;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 500px) {
+   .container {
+       width: 330px;
+       height: 630px;
+       margin-top: 10px;
+       padding-top: 5px;
+   }
+  
+  }

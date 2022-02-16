@@ -202,9 +202,10 @@ function passing() {
     } else {
         setTimeout(function(){
             alert("It's Player 1's turn!");
+            document.querySelector("#current1").innerHTML = `* CURRENT: ${0} *`;
             current2 = 0;
-            game = roll3;
-            hold = pass3;
+            game = infinite;
+            hold = infPass;
         }, 500); 
     }
 }
@@ -253,7 +254,57 @@ function pass3(){
         alert("It's Player 1's turn!");
         document.querySelector("#current1").innerHTML = `* CURRENT: ${0} *`;
         current1 = 0;
-        // game = this.game;
-        // hold = this.hold;
+        game = infinite;
+        hold = infPass;
+        score1 = totals1;
+    }, 500); 
+}
+
+function infinite(){
+    console.log(score1);
+    console.log("infinite");
+    dice.forEach(function(shake) {
+        shake.classList.add("shake");
+    });
+    setTimeout(function(){
+        dice.forEach(function(shake) {
+            shake.classList.remove("shake");
+        });
+        let diceValue = Math.floor(Math.random()*6)+1;
+        document.querySelector("#d").setAttribute("src", images[diceValue]);
+        document.querySelector("#current1").innerHTML = `* CURRENT: ${current1 + diceValue} *`;
+        current1 = current1 + diceValue;
+        score1 = score1 + current1;
+        console.log(score1);
+        if (current1 >= 20 || totals1 >= 20){
+            setTimeout(function(){
+                alert("PLAYER 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>> YOU WON!!!")
+                document.getElementById("totals1").style.color = "green";
+                document.querySelector("#totals1").innerHTML = `< WINNER: ${totals1 + current1} >`;
+                document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
+            }, 500);
+        }
+        if (diceValue == 1 && totals1 >= 0) {
+            setTimeout(function(){
+                current1 = 0;
+                document.querySelector("#totals1").innerHTML = `TOTAL: ${totals1 + current1}`;
+                document.querySelector("#current1").innerHTML = `CURRENT: ${0}`;
+                infPass();
+            }, 500);
+        }
+    }, 1000);
+}
+
+function infPass(){
+    console.log("infPass");
+    document.querySelector("#totals1").innerHTML = `TOTAL: ${score1 + current1}`;
+    document.querySelector("#current1").innerHTML = `CURRENT: ${current1}`;
+    document.querySelector("#current2").innerHTML = `CURRENT: ${0}`;
+    setTimeout(function(){
+        alert("It's Player 2's turn!");
+        document.querySelector("#current2").innerHTML = `* CURRENT: ${0} *`;
+        current1 = 0;
+        game = rollDices;
+        hold = holding;
     }, 500); 
 }
